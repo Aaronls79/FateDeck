@@ -5,11 +5,57 @@
     <title>@ViewBag.Title - Fate Deck</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     @Styles.Render("~/Content/css")
 </head>
 <body>
-    @RenderSection("featured", required: false)
-    @RenderBody()
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Fate Deck</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Encounter</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid theme-fate-deck" role="main">
+        <div class="page-header">
+            <h1>@ViewBag.Title</h1>
+        </div>
+        @RenderBody()
+    </div>
+    <div class="clearfix"></div>
+    <footer class="container footer">
+        <div class="col-xs-12">
+            <div class="hidden-sm hidden-xs text-center">
+                <script type="text/javascript">
+                    google_ad_client = "ca-pub-1140943179578086";
+                    google_ad_slot = "8376617358";
+                    google_ad_width = 728;
+                    google_ad_height = 90;
+                </script>
+                <script type="text/javascript" src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+            </div>
+            <div class="hidden-lg hidden-md text-center">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Fate Deck Mobile -->
+                <ins class="adsbygoogle" style="display: inline-block; width: 320px; height: 50px" data-ad-client="ca-pub-1140943179578086" data-ad-slot="1430448555"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </div>
+    </footer>
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 </body>

@@ -1,3 +1,84 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Standard Encounter";
 }
+<div class="row">
+    <div class="col-md-4">
+        <h2>Deployment <small class="text-right">Standard</small></h2>
+        <p>A player will deploy within 6" of a chosen Table Edge, with the opponent deploying within 6" of the opposite Table Edge.</p>
+        <hr class="hidden-lg hidden-md" />
+    </div>
+    <div class="col-md-4">
+        <h2>Strategy <small class="text-right">Turf War</small></h2>
+        <dl>
+            <dt>Setup</dt>
+            <dd>Place a single Turf Marker at the Center of the table.</dd>
+            <dt>Victory Points</dt>
+            <dd>At the end of each Turn after the first, a Crew earns 1 VP if it has two or more non-Peon models within 6" of the Turf Marker.</dd>
+        </dl>
+        <hr class="hidden-lg hidden-md" />
+    </div>
+    <div class="col-md-4">
+        <h2>Scheme <small class="text-right">A Line in the Sand</small></h2>
+        <p>
+            At the end of the game, the Crew earns 2 VP if it has at least four Scheme Markers on the Centerline.
+        </p>
+        <p>
+            If this Scheme is revealed, the Crew earns an additional VP if it has at least two Scheme markers on the Centerline at the end of the game.
+        </p>
+        <hr class="hidden-lg hidden-md" />
+    </div>
+</div>
+<hr class="hidden-xs hidden-sm" />
+<div class="row">
+    <div class="col-md-4">
+        <h2>Scheme <small class="text-right">Distract</small></h2>
+        <p>
+            All non-Peon models in this Crew may target a non-Peon enemy model within 1" with a (1) Interact Action to give the target the following Condition for the rest of the game:
+        </p>
+        <p>
+            Distracted: This model may take a (2) Interact Action to remove this Condition from itself. No other Action may remove this Condition.
+        </p>
+        <p>
+            This Scheme starts the game unrevealed. The first time an enemy model gains the Distracted Condition, reveal this Scheme. At the end of every Turn, this Crew earns 1 VP if at least two enemy models have the Distracted Condition.
+        </p>
+        <hr class="hidden-lg hidden-md" />
+    </div>
+    <div class="col-md-4">
+        <h2>Scheme <small class="text-right">Breakthrough</small></h2>
+        <p>
+            At the end of the game, this Crew earns 1 VP for each of its Scheme Markers within 6" of the enemy Deployment Zone.
+        </p>
+        <p>
+            If this Scheme is revealed and this Crew earns at least 2 VP from this Scheme, it earns 1 additional VP.
+        </p>
+        <hr class="hidden-lg hidden-md" />
+    </div>
+    <div class="col-md-4">
+        <h2>Scheme <small class="text-right">Assassinate</small></h2>
+        <p>
+            This Scheme begins the game unrevealed. If the enemy Leader is killed or sacrificed, reveal this Scheme. If the enemy Leader is killed or sacrificed, gain 2 VP. If this happens on or before Turn 4, score 3 VP instead.
+        </p>
+        <hr class="hidden-lg hidden-md" />
+    </div>
+</div>
+<hr class="hidden-xs hidden-sm" />
+<div class="row">
+    <div class="col-md-4">
+        <h2>Scheme <small class="text-right">Protect Territory</small></h2>
+        <p>
+            At the end of the game, this Crew gains 1 VP for each of its Scheme Markers which is at least 6" from its Deployment Zone and has at least one friendly non-Peon model within 2" of it. Scheme Markers with more enemy models than friendly models within 2" do not count towards this Scheme.
+        </p>
+        <p>
+            If this Scheme is revealed and this Crew earns at least 2 VP from this Scheme, it earns 1 additional VP.
+        </p>
+        <hr class="hidden-lg hidden-md" />
+    </div>
+</div>
+<hr class="hidden-xs hidden-sm" />
+<div class="row">
+    <div class="col-xs-12">
+        <button type="button" id="flipAgain" data-loading-text="Loading..." class="btn btn-primary btn-lg col-xs-12">
+            Flip Again
+        </button>
+    </div>
+</div>
