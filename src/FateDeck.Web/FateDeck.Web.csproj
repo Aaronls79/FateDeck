@@ -196,11 +196,14 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Deployment.cs" />
+    <Compile Include="Models\FateDeck.cs" />
+    <Compile Include="Models\StandardEncounter.cs" />
     <Compile Include="Models\FateCard.cs" />
     <Compile Include="Models\Scheme.cs" />
-    <Compile Include="Models\Strategy.cs" />
+    <Compile Include="Models\StandardStrategy.cs" />
     <Compile Include="Models\Suite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\EncounterRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
