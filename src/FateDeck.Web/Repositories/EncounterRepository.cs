@@ -5,17 +5,17 @@ namespace FateDeck.Web.Repositories
 {
     public class EncounterRepository
     {
-        public Scheme[] GetSchemes(params FateCard[] fateCards)
+        public Scheme[] GetSchemes(params Models.FateCard[] fateCards)
         {
             throw new NotImplementedException();
         }
 
-        public Deployment GetDeployment(FateCard fateCard)
+        public Deployment GetDeployment(Models.FateCard fateCard)
         {
             throw new NotImplementedException();
         }
 
-        public StandardStrategy GetStandardStrategy(FateCard fateCard)
+        public StandardStrategy GetStandardStrategy(Models.FateCard fateCard)
         {
             throw new NotImplementedException();            
         }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
+using FateDeck.Web.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FateDeck.Web;
-using FateDeck.Web.Controllers;
 
 namespace FateDeck.Tests.Controllers
 {

@@ -6,10 +6,10 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using DotNetOpenAuth.AspNet;
-using Microsoft.Web.WebPages.OAuth;
-using WebMatrix.WebData;
 using FateDeck.Web.Filters;
 using FateDeck.Web.Models;
+using Microsoft.Web.WebPages.OAuth;
+using WebMatrix.WebData;
 
 namespace FateDeck.Web.Controllers
 {

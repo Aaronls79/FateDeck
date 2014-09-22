@@ -196,7 +196,7 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Deployment.cs" />
-    <Compile Include="Models\FateDeck.cs" />
+    <Compile Include="Models\FateCardDeck.cs" />
     <Compile Include="Models\StandardEncounter.cs" />
     <Compile Include="Models\FateCard.cs" />
     <Compile Include="Models\Scheme.cs" />
