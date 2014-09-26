@@ -6,5 +6,6 @@
         public string Name { get; set; }
         public string Description { get; set; }
         public int FlipValue { get; set; }
+        public Source Source { get; set; }
     }
 }
