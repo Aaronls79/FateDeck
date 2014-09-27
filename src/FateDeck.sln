@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FateDeck.Tests", "src\FateDeck.Tests\FateDeck.Tests.csproj", "{72E8677C-8C68-43FE-8B21-384B5C9ED0D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FateDeck.Tests", "FateDeck.Tests\FateDeck.Tests.csproj", "{72E8677C-8C68-43FE-8B21-384B5C9ED0D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FateDeck.Web", "src\FateDeck.Web\FateDeck.Web.csproj", "{FE7AC0C7-D5F5-4BCA-B6AB-FB3E20241A86}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FateDeck.Web", "FateDeck.Web\FateDeck.Web.csproj", "{FE7AC0C7-D5F5-4BCA-B6AB-FB3E20241A86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
