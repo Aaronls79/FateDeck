@@ -56,12 +56,12 @@ namespace FateDeck.Web.Repositories
 
         public void Save(T item)
         {
-
+            throw new NotImplementedException();
         }
 
         public T Get(int id)
         {
-
+            throw new NotImplementedException();
         }
 
         public static string DbFile
