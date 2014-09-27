@@ -43,6 +43,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Dapper">
+      <HintPath>..\..\packages\Dapper.1.34\lib\net45\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="DotNetOpenAuth.AspNet, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\DotNetOpenAuth.AspNet.4.3.4.13329\lib\net45-full\DotNetOpenAuth.AspNet.dll</HintPath>
@@ -93,7 +96,17 @@
       <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\..\packages\System.Data.SQLite.Core.1.0.94.0\lib\net45\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6">
+      <HintPath>..\..\packages\System.Data.SQLite.EF6.1.0.94.0\lib\net45\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq">
+      <HintPath>..\..\packages\System.Data.SQLite.Linq.1.0.94.1\lib\net45\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http.Extensions">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Extensions.dll</HintPath>
@@ -196,11 +209,12 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Deployment.cs" />
-    <Compile Include="Models\FateDeck.cs" />
-    <Compile Include="Models\StandardEncounter.cs" />
+    <Compile Include="Models\FateCardDeck.cs" />
+    <Compile Include="Models\Source.cs" />
+    <Compile Include="Models\StandardEncounterViewModel.cs" />
     <Compile Include="Models\FateCard.cs" />
     <Compile Include="Models\Scheme.cs" />
-    <Compile Include="Models\StandardStrategy.cs" />
+    <Compile Include="Models\Strategy.cs" />
     <Compile Include="Models\Suite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EncounterRepository.cs" />
@@ -279,19 +293,6 @@
     </Content>
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Images\accent.png" />
-    <Content Include="Images\bullet.png" />
-    <Content Include="Images\heroAccent.png" />
-    <Content Include="Images\orderedList0.png" />
-    <Content Include="Images\orderedList1.png" />
-    <Content Include="Images\orderedList2.png" />
-    <Content Include="Images\orderedList3.png" />
-    <Content Include="Images\orderedList4.png" />
-    <Content Include="Images\orderedList5.png" />
-    <Content Include="Images\orderedList6.png" />
-    <Content Include="Images\orderedList7.png" />
-    <Content Include="Images\orderedList8.png" />
-    <Content Include="Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
@@ -303,7 +304,6 @@
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
@@ -348,6 +348,13 @@
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
     <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <Import Project="..\..\packages\System.Data.SQLite.Core.1.0.94.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\..\packages\System.Data.SQLite.Core.1.0.94.0\build\net45\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\System.Data.SQLite.Core.1.0.94.0\build\net45\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\System.Data.SQLite.Core.1.0.94.0\build\net45\System.Data.SQLite.Core.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
