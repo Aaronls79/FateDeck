@@ -1,9 +1,12 @@
-﻿namespace FateDeck.Web.Models
+﻿using FateDeck.Web.Models.Contracts;
+
+namespace FateDeck.Web.Models
 {
-    public class Strategy
+    public class Strategy:IEntity
     {
-        public Strategy(string name, string setup, string victoryPoints, string specialRules, Suite flipSuit, Source source)
+        public Strategy(int id, string name, string setup, string victoryPoints, string specialRules, Suite flipSuit, Source source)
         {
+            Id = id;
             Name = name;
             Setup = setup;
             VictoryPoints = victoryPoints;

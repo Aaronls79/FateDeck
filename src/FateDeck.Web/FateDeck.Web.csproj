@@ -210,6 +210,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Contracts\IEntity.cs" />
     <Compile Include="Models\Deployment.cs" />
     <Compile Include="Models\FateCardDeck.cs" />
     <Compile Include="Models\Source.cs" />
@@ -219,7 +220,12 @@
     <Compile Include="Models\Strategy.cs" />
     <Compile Include="Models\Suite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\EncounterRepository.cs" />
+    <Compile Include="Repositories\DeploymentRepository.cs" />
+    <Compile Include="Repositories\Contracts\IRepositoryBase.cs" />
+    <Compile Include="Repositories\StrategyRepository.cs" />
+    <Compile Include="Repositories\FateDeckRepositoryBase.cs" />
+    <Compile Include="Repositories\SchemesRepository.cs" />
+    <Compile Include="Runtime\DataSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
