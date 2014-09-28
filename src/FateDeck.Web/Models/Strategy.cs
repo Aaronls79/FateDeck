@@ -17,12 +17,12 @@ namespace FateDeck.Web.Models
 
         public Strategy(){}
 
+        public Suite FlipSuit { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public string Setup { get; set; }
+        public Source Source { get; set; }
         public string SpecialRules { get; set; }
         public string VictoryPoints { get; set; }
-        public Suite FlipSuit { get; set; }
-        public Source Source { get; set; }
     }
 }

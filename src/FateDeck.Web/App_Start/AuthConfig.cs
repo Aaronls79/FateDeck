@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Web.WebPages.OAuth;
-using FateDeck.Web.Models;
-
-namespace FateDeck.Web
+﻿namespace FateDeck.Web
 {
     public static class AuthConfig
     {

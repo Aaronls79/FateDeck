@@ -13,8 +13,8 @@
         {
         }
 
-        public int Value { get; set; }
-        public Suite Suite { get; set; }
         public string Key { get; set; }
+        public Suite Suite { get; set; }
+        public int Value { get; set; }
     }
 }

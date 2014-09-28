@@ -17,14 +17,14 @@ namespace FateDeck.Web.Models
         private readonly Stack<FateCard> _discardStack = new Stack<FateCard>();
         private readonly List<FateCard> _handOfCards = new List<FateCard>();
 
-        public Stack<FateCard> FateDeckStack
-        {
-            get { return _cardStack; }
-        }
-
         public Stack<FateCard> DiscardStack
         {
             get { return _discardStack; }
+        }
+
+        public Stack<FateCard> FateDeckStack
+        {
+            get { return _cardStack; }
         }
 
         public List<FateCard> HandOfCards

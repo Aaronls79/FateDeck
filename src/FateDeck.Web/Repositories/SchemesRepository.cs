@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Dapper;
 using FateDeck.Web.Models;
@@ -24,7 +23,7 @@ namespace FateDeck.Web.Repositories
                     if (scheme != null)
                         schemes.Add(scheme);
 
-                    foreach (var fateCard in fateCards)
+                    foreach (FateCard fateCard in fateCards)
                     {
                         if (fateCard.Suite == Suite.Wild || fateCard.Suite == Suite.None) continue;
 

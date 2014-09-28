@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Dapper;
 using FateDeck.Web.Models;
 using FateDeck.Web.Repositories.Contracts;

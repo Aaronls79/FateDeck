@@ -2,15 +2,23 @@
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
-using System.Linq;
 using Dapper;
 using FateDeck.Web.Models;
-using Microsoft.Ajax.Utilities;
 
 namespace FateDeck.Web.Runtime
 {
     public class DataSource
     {
+        public static string DbFile
+        {
+            get { return Environment.CurrentDirectory + "\\App_Data\\FateDeck.sqlite"; }
+        }
+
+        public static SQLiteConnection Connection()
+        {
+            return new SQLiteConnection("Data Source=" + DbFile);
+        }
+
         public DataSource Create()
         {
             if (File.Exists(DbFile)) return new DataSource();
@@ -66,28 +74,6 @@ namespace FateDeck.Web.Runtime
             InitializeSchemes();
         }
 
-        private static void InitializeStrategies()
-        {
-            using (var cnn = Connection())
-            {
-                var strategies = new List<Strategy>
-                {
-                    new Strategy(0,"Turf War","Place a single Turf Marker at the Center of the table.","At the end of each Turn after the first, a Crew earns 1 VP if it has two or more non-Peon models within 6\" of the Turf Marker.","None",Suite.Rams,Source.CoreRulebook2ndEdition),
-                    new Strategy(0,"Reckoning","None","At the end of every Turn, after the first, a Crew earns 1 VP if it killed or sacrificed two or more enemy models during that Turn.<br/>At the end of every Turn after the first, if a player has no models in play (buried models are not considered \"in play\") then her opponent earns 1 VP. A player may not earn more than 1 VP from this Strategy per Turn.","None",Suite.Crows,Source.CoreRulebook2ndEdition),
-                    new Strategy(0,"Reconnoiter","Divide the table into four 18\" x 18\" table Quarters.","At the end of each Turn after the first, a Crew earns 1VP if it controls two or more table Quarters. To control a table quarter, the Crew must have the most non-Peon models within the table Quarter. These models cannot be within 6\" of the Center of the table, or partially within another table Quarter.","None",Suite.Masks,Source.CoreRulebook2ndEdition),
-                    new Strategy(0,"Squatter's Rights","Place five 30mm Squat Markers along the Centerline. One is placed at the Center of the table. Then, two more are placed on the Centerline 6\" away from the Center of the table (one on each side). Lastly, two more are placed on the Centerline 6\" away from table's edge (one on each side).","At the end of each Turn after the first, a Crew earns 1 VP if it has claim to at least two Squat Markers.","Squat Markers begin the game claimed by neither Crew.<br/>A model may take a (1) Interact Action to claim any Squat marker that is in base contact with the model. A Squat marker is only ever claimed by the last Crew to interact with it, all previous claims are removed.",Suite.Tombs,Source.CoreRulebook2ndEdition),
-                    new Strategy(0,"Stake a Claim","None","At the end of each Turn after the first, a Crew earns 1 VP if there are more Claim Markers on the Enemy Half of the table than its own.","A model may take a (2) Interact Action to discard all Claim Markers within 6\" of itself, and then place a Claim Marker in base contact with itself.",Suite.None | Suite.Wild,Source.CoreRulebook2ndEdition)
-                };
-                foreach (var strategy in strategies)
-                {
-                    cnn.ExecuteAsync(
-                        @"INSERT INTO Strategy 
-                        ( Name, Setup, VictoryPoints, FlipSuit, Source ) VALUES 
-                        ( @Name, @Setup, @VictoryPoints, @FlipSuit, @Source )"
-                        , strategy);
-                }
-            }
-        }
         private static void InitializeDeployments()
         {
             using (var cnn = Connection())
@@ -101,7 +87,7 @@ namespace FateDeck.Web.Runtime
                     new Deployment(0,"Close Deployment","A player will deploy within 12\" of a chosen Table Edge, with the opponent deploying within 12\" of the opposite Table Edge.", 0, 0, Source.CoreRulebook2ndEdition),
                 };
 
-                foreach (var deployment in deployments)
+                foreach (Deployment deployment in deployments)
                 {
                     cnn.ExecuteAsync(
                         @"INSERT INTO Deployment 
@@ -139,7 +125,7 @@ namespace FateDeck.Web.Runtime
                     new Scheme(0,"Power Ritual","At the end of the game, for each Table Corner that this Crew has a Scheme marker within 6\" of, this Crew earns 1 VP. Only one Table Corner within this Crew's Deployment Zone may count towards this Scheme. If this Scheme is revealed and this Crew earns at least 2 VP from this Scheme, it earns 1 additional VP.", 13, Suite.None, Source.CoreRulebook2ndEdition),
                 };
 
-                foreach (var scheme in schemes)
+                foreach (Scheme scheme in schemes)
                 {
                     cnn.ExecuteAsync(
                         @"INSERT INTO Scheme 
@@ -150,15 +136,27 @@ namespace FateDeck.Web.Runtime
             }
         }
 
-        public static string DbFile
+        private static void InitializeStrategies()
         {
-            get { return Environment.CurrentDirectory + "\\App_Data\\FateDeck.sqlite"; }
+            using (var cnn = Connection())
+            {
+                var strategies = new List<Strategy>
+                {
+                    new Strategy(0,"Turf War","Place a single Turf Marker at the Center of the table.","At the end of each Turn after the first, a Crew earns 1 VP if it has two or more non-Peon models within 6\" of the Turf Marker.","None",Suite.Rams,Source.CoreRulebook2ndEdition),
+                    new Strategy(0,"Reckoning","None","At the end of every Turn, after the first, a Crew earns 1 VP if it killed or sacrificed two or more enemy models during that Turn.<br/>At the end of every Turn after the first, if a player has no models in play (buried models are not considered \"in play\") then her opponent earns 1 VP. A player may not earn more than 1 VP from this Strategy per Turn.","None",Suite.Crows,Source.CoreRulebook2ndEdition),
+                    new Strategy(0,"Reconnoiter","Divide the table into four 18\" x 18\" table Quarters.","At the end of each Turn after the first, a Crew earns 1VP if it controls two or more table Quarters. To control a table quarter, the Crew must have the most non-Peon models within the table Quarter. These models cannot be within 6\" of the Center of the table, or partially within another table Quarter.","None",Suite.Masks,Source.CoreRulebook2ndEdition),
+                    new Strategy(0,"Squatter's Rights","Place five 30mm Squat Markers along the Centerline. One is placed at the Center of the table. Then, two more are placed on the Centerline 6\" away from the Center of the table (one on each side). Lastly, two more are placed on the Centerline 6\" away from table's edge (one on each side).","At the end of each Turn after the first, a Crew earns 1 VP if it has claim to at least two Squat Markers.","Squat Markers begin the game claimed by neither Crew.<br/>A model may take a (1) Interact Action to claim any Squat marker that is in base contact with the model. A Squat marker is only ever claimed by the last Crew to interact with it, all previous claims are removed.",Suite.Tombs,Source.CoreRulebook2ndEdition),
+                    new Strategy(0,"Stake a Claim","None","At the end of each Turn after the first, a Crew earns 1 VP if there are more Claim Markers on the Enemy Half of the table than its own.","A model may take a (2) Interact Action to discard all Claim Markers within 6\" of itself, and then place a Claim Marker in base contact with itself.",Suite.None | Suite.Wild,Source.CoreRulebook2ndEdition)
+                };
+                foreach (Strategy strategy in strategies)
+                {
+                    cnn.ExecuteAsync(
+                        @"INSERT INTO Strategy 
+                        ( Name, Setup, VictoryPoints, FlipSuit, Source ) VALUES 
+                        ( @Name, @Setup, @VictoryPoints, @FlipSuit, @Source )"
+                        , strategy);
+                }
+            }
         }
-
-        public static SQLiteConnection Connection()
-        {
-            return new SQLiteConnection("Data Source=" + DbFile);
-        }
-
     }
 }

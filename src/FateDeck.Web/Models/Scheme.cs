@@ -16,11 +16,11 @@ namespace FateDeck.Web.Models
 
         public Scheme(){}
 
+        public string Description { get; set; }
+        public Suite FlipSuite { get; set; }
+        public int FlipValue { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
-        public int FlipValue { get; set; }
-        public Suite FlipSuite { get; set; }
         public Source Source { get; set; }
     }
 }
