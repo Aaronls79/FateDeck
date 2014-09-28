@@ -31,7 +31,9 @@ namespace FateDeck.Web.Models
         {
             get { return _handOfCards; }
         }
-
+        /// <summary>
+        /// Draws from the top of the deck and adds to your hand.
+        /// </summary>
         public FateCard DrawCard()
         {
             var card = FateDeckStack.Pop();
@@ -39,6 +41,9 @@ namespace FateDeck.Web.Models
             return card;
         }
 
+        /// <summary>
+        /// Draws the top card of the deck and adds it to the discard.
+        /// </summary>
         public FateCard Flip()
         {
             var card = FateDeckStack.Pop();
@@ -46,6 +51,11 @@ namespace FateDeck.Web.Models
             return card;
         }
 
+        /// <summary>
+        /// Verifies card is in your hand then removes the card from your hand and adds it to the discard.
+        /// </summary>
+        /// <param name="card"></param>
+        /// <returns></returns>
         public FateCard PlayCard(FateCard card)
         {
             var discard = HandOfCards.Find(x => x.Key == card.Key);
@@ -56,6 +66,9 @@ namespace FateDeck.Web.Models
             return card;
         }
 
+        /// <summary>
+        /// Shuffles discard in to deck maintaining your hand.
+        /// </summary>
         public void Shuffle()
         {
             var random = new Random(DateTime.Now.Millisecond);

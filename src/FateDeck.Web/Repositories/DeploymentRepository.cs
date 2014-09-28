@@ -2,11 +2,12 @@
 using System.Linq;
 using Dapper;
 using FateDeck.Web.Models;
+using FateDeck.Web.Repositories.Contracts;
 using FateDeck.Web.Runtime;
 
 namespace FateDeck.Web.Repositories
 {
-    public class DeploymentRepository : RepositoryBase<Deployment>
+    public class DeploymentRepository : RepositoryBase<Deployment>, IDeploymentRepository
     {
         public Deployment GetDeployment(FateCard fateCard)
         {

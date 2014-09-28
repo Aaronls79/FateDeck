@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Dapper;
 using FateDeck.Web.Models;
+using FateDeck.Web.Repositories.Contracts;
 using FateDeck.Web.Runtime;
 
 namespace FateDeck.Web.Repositories
 {
-    public class SchemesRepository : RepositoryBase<Scheme>
+    public class SchemesRepository : RepositoryBase<Scheme>, ISchemesRepository
     {
         public Scheme[] GetSchemes(params FateCard[] fateCards)
         {

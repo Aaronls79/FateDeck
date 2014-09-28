@@ -4,11 +4,12 @@ using System.IO;
 using System.Linq;
 using Dapper;
 using FateDeck.Web.Models;
+using FateDeck.Web.Repositories.Contracts;
 using FateDeck.Web.Runtime;
 
 namespace FateDeck.Web.Repositories
 {
-    public class StrategyRepository : RepositoryBase<Strategy>
+    public class StrategyRepository : RepositoryBase<Strategy>, IStrategyRepository
     {
         public Strategy GetStandardStrategy(FateCard fateCard)
         {
