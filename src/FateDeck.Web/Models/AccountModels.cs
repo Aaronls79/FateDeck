@@ -1,19 +1,19 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
+//using System.Data.Entity;
 using FateDeck.Web.Runtime;
 
 namespace FateDeck.Web.Models
 {
-    public class UsersContext : DbContext
-    {
-        public UsersContext()
-            : base(DataSource.Connection(),true)
-        {
-        }
+    //public class UsersContext : DbContext
+    //{
+    //    public UsersContext()
+    //        : base(DataSource.Connection(),true)
+    //    {
+    //    }
 
-        public DbSet<UserProfile> UserProfiles { get; set; }
-    }
+    //    public DbSet<UserProfile> UserProfiles { get; set; }
+    //}
 
     [Table("UserProfile")]
     public class UserProfile

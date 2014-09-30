@@ -11,7 +11,7 @@ namespace FateDeck.Web.Runtime
     {
         public static string DbFile
         {
-            get { return Environment.CurrentDirectory + "\\App_Data\\FateDeck.sqlite"; }
+            get { return Environment.CurrentDirectory + "\\FateDeck.sqlite"; }
         }
 
         public static SQLiteConnection Connection()
@@ -19,9 +19,16 @@ namespace FateDeck.Web.Runtime
             return new SQLiteConnection("Data Source=" + DbFile);
         }
 
+        public DataSource Delete()
+        {
+            if (!File.Exists(DbFile)) return this;
+            File.Delete(DbFile);
+            return this;
+        }
+
         public DataSource Create()
         {
-            if (File.Exists(DbFile)) return new DataSource();
+            if (File.Exists(DbFile)) return this;
 
             using (var cnn = Connection())
             {

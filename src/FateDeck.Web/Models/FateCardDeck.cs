@@ -59,8 +59,7 @@ namespace FateDeck.Web.Models
         public FateCard PlayCard(FateCard card)
         {
             var discard = HandOfCards.Find(x => x.Key == card.Key);
-            if (discard == null)
-                throw new ArgumentException(string.Format("Cheater, you do not have a {0} of {1} in your hand,", card.Value, card.Suite));
+            if (discard == null) throw new ArgumentException(string.Format("Cheater, you do not have a {0} of {1} in your hand,", card.Value, card.Suite));
             HandOfCards.Remove(discard);
             DiscardStack.Push(discard);
             return card;
