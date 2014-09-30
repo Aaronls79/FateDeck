@@ -36,7 +36,7 @@ namespace FateDeck.Web.Runtime
                 cnn.Execute(
                   @"create table Scheme
                   (
-                     Id             integer identity primary key AUTOINCREMENT,
+                     Id             ROWID,
                      Name           varchar(128) not null,
                      Description    varchar(512) not null,
                      FlipSuite      integer not null,
@@ -47,7 +47,7 @@ namespace FateDeck.Web.Runtime
                 cnn.Execute(
                    @"create table Strategy
                   (
-                     Id             integer identity primary key AUTOINCREMENT,
+                     Id             ROWID,
                      Name           varchar(128) not null,
                      Setup          varchar(512) not null,
                      VictoryPoints  varchar(512) not null,
@@ -59,7 +59,7 @@ namespace FateDeck.Web.Runtime
                 cnn.Execute(
                   @"create table Deployment
                   (
-                     Id                integer identity primary key AUTOINCREMENT,
+                     Id                ROWID,
                      Name              varchar(128) not null,
                      Description       varchar(512) not null,
                      VictoryPoints     varchar(512) not null,
