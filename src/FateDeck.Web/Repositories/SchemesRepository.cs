@@ -17,7 +17,7 @@ namespace FateDeck.Web.Repositories
                 using (var cnn = DataSource.Connection())
                 {
                     var scheme = cnn.Query<Scheme>(@"
-                            SELECT * Scheme
+                            SELECT * FROM Scheme
                             WHERE Name = 'A Line in the Sand'
                         ").FirstOrDefault();
                     if (scheme != null)
@@ -28,7 +28,7 @@ namespace FateDeck.Web.Repositories
                         if (fateCard.Suite == Suite.Wild || fateCard.Suite == Suite.None) continue;
 
                         scheme = cnn.Query<Scheme>(@"
-                            SELECT * Scheme
+                            SELECT * FROM Scheme
                             WHERE FlipSuit = @Suite
                         ", new { fateCard.Suite }
                         ).FirstOrDefault();
@@ -36,7 +36,7 @@ namespace FateDeck.Web.Repositories
                             schemes.Add(scheme);
 
                         scheme = cnn.Query<Scheme>(@"
-                            SELECT * Scheme
+                            SELECT * FROM Scheme
                             WHERE FlipValue = @Value
                         ", new { fateCard.Value }
                         ).FirstOrDefault();
@@ -46,7 +46,7 @@ namespace FateDeck.Web.Repositories
                     if ((schemes.Count - 1) != (fateCards.Count(x => x.Suite == Suite.Wild || x.Suite == Suite.None) * 2))
                     {
                         scheme = cnn.Query<Scheme>(@"
-                            SELECT * Scheme
+                            SELECT * FROM Scheme
                             WHERE Name = 'Distract'
                         ").FirstOrDefault();
                         if (scheme != null && !schemes.Exists(x => x.Id == scheme.Id))

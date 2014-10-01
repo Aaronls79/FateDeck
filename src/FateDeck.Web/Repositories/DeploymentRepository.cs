@@ -15,13 +15,13 @@ namespace FateDeck.Web.Repositories
                 if (fateCard.Suite != Suite.Wild && fateCard.Suite != Suite.None)
                 {
                     return cnn.Query<Deployment>(@"
-                            SELECT * Deployment
+                            SELECT * FROM Deployment
                             WHERE FlipValueMax <= @Value AND FlipValueMin >= @Value
                         ", new {fateCard.Value}
                     ).FirstOrDefault();
                 }
                 return cnn.Query<Deployment>(@"
-                            SELECT * Deployment
+                            SELECT * FROM Deployment
                             WHERE Name = 'Close Deployment'
                         ").FirstOrDefault();
             }

@@ -15,13 +15,13 @@ namespace FateDeck.Web.Repositories
                 if (fateCard.Suite != Suite.Wild && fateCard.Suite != Suite.None)
                 {
                     return cnn.Query<Strategy>(@"
-                            SELECT * Strategy
+                            SELECT * FROM Strategy
                             WHERE FlipSuit = @Suite
                         ", new { fateCard.Suite }
                     ).FirstOrDefault();
                 }
                 return cnn.Query<Strategy>(@"
-                    SELECT * Strategy
+                    SELECT * FROM Strategy
                     WHERE Name = 'Stake a Claim'
                 ").FirstOrDefault();
             }

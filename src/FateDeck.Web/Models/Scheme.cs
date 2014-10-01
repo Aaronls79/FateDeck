@@ -4,20 +4,20 @@ namespace FateDeck.Web.Models
 {
     public class Scheme : IEntity
     {
-        public Scheme(int id, string name, string description, int flipValue, Suite flipSuite, Source source)
+        public Scheme(int id, string name, string description, int flipValue, Suite flipSuit, Source source)
         {
             Id = id;
             Name = name;
             Description = description;
             FlipValue = flipValue;
-            FlipSuite = flipSuite;
+            FlipSuit = flipSuit;
             Source = source;
         }
 
         public Scheme(){}
 
         public string Description { get; set; }
-        public Suite FlipSuite { get; set; }
+        public Suite FlipSuit { get; set; }
         public int FlipValue { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }

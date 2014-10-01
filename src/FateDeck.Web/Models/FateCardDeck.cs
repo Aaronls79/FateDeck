@@ -16,6 +16,11 @@ namespace FateDeck.Web.Models
         private readonly Stack<FateCard> _cardStack = new Stack<FateCard>();
         private readonly Stack<FateCard> _discardStack = new Stack<FateCard>();
         private readonly List<FateCard> _handOfCards = new List<FateCard>();
+        
+        public FateCard[] AvailableCards
+        {
+            get { return _availableCards; }
+        }
 
         public Stack<FateCard> DiscardStack
         {
@@ -31,6 +36,7 @@ namespace FateDeck.Web.Models
         {
             get { return _handOfCards; }
         }
+
         /// <summary>
         /// Draws from the top of the deck and adds to your hand.
         /// </summary>
@@ -73,9 +79,9 @@ namespace FateDeck.Web.Models
             var random = new Random(DateTime.Now.Millisecond);
             DiscardStack.Clear();
             FateDeckStack.Clear();
-            var cards = new List<FateCard>(_availableCards);
+            var cards = new List<FateCard>(AvailableCards);
             cards.RemoveAll(x => HandOfCards.Exists(y => y.Key == x.Key));
-            while (FateDeckStack.Count + HandOfCards.Count < _availableCards.Length)
+            while (FateDeckStack.Count + HandOfCards.Count < AvailableCards.Length)
             {
                 var index = random.Next(cards.Count - 1);
                 FateDeckStack.Push(cards[index]);

@@ -9,9 +9,7 @@
             Key = key;
         }
 
-        public FateCard()
-        {
-        }
+        public FateCard(){}
 
         public string Key { get; set; }
         public Suite Suite { get; set; }

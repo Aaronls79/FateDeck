@@ -36,10 +36,10 @@ namespace FateDeck.Web.Runtime
                 cnn.Execute(
                   @"create table Scheme
                   (
-                     Id             ROWID,
+                     Id             INTEGER PRIMARY KEY,
                      Name           varchar(128) not null,
                      Description    varchar(512) not null,
-                     FlipSuite      integer not null,
+                     FlipSuit      integer not null,
                      Source         integer not null,
                      FlipValue      integer not null
                   )"
@@ -47,22 +47,21 @@ namespace FateDeck.Web.Runtime
                 cnn.Execute(
                    @"create table Strategy
                   (
-                     Id             ROWID,
+                     Id             INTEGER PRIMARY KEY,
                      Name           varchar(128) not null,
                      Setup          varchar(512) not null,
                      VictoryPoints  varchar(512) not null,
                      SpecialRules   varchar(512) not null,
-                     FlipSuite      integer not null,
+                     FlipSuit      integer not null,
                      Source         integer not null
                   )"
                  );
                 cnn.Execute(
                   @"create table Deployment
                   (
-                     Id                ROWID,
+                     Id                INTEGER PRIMARY KEY,
                      Name              varchar(128) not null,
                      Description       varchar(512) not null,
-                     VictoryPoints     varchar(512) not null,
                      FlipValueMax      integer not null,
                      FlipValueMin      integer not null,
                      Source            integer not null
@@ -74,8 +73,6 @@ namespace FateDeck.Web.Runtime
 
         public void Initialize()
         {
-            if (File.Exists(DbFile)) return;
-
             InitializeStrategies();
             InitializeDeployments();
             InitializeSchemes();
@@ -96,10 +93,10 @@ namespace FateDeck.Web.Runtime
 
                 foreach (Deployment deployment in deployments)
                 {
-                    cnn.ExecuteAsync(
+                    cnn.Execute(
                         @"INSERT INTO Deployment 
-                        ( Name, Description, FlipValueMax, FlipValueMin, Source ) VALUES 
-                        ( @Name, @Description, @FlipValueMax, @FlipValueMin, @Source )"
+                        ( Id, Name, Description, FlipValueMax, FlipValueMin, Source ) VALUES 
+                        ( NULL, @Name, @Description, @FlipValueMax, @FlipValueMin, @Source )"
                         , deployment);
                 }
             }
@@ -134,10 +131,10 @@ namespace FateDeck.Web.Runtime
 
                 foreach (Scheme scheme in schemes)
                 {
-                    cnn.ExecuteAsync(
+                    cnn.Execute(
                         @"INSERT INTO Scheme 
-                        ( Name, Description, FlipValue, FlipSuite, Source ) VALUES 
-                        ( @Name, @Description, @FlipValue, @FlipSuite, @Source );"
+                        ( Id, Name, Description, FlipValue, FlipSuit, Source ) VALUES 
+                        ( NULL, @Name, @Description, @FlipValue, @FlipSuit, @Source );"
                         , scheme);
                 }
             }
@@ -157,10 +154,10 @@ namespace FateDeck.Web.Runtime
                 };
                 foreach (Strategy strategy in strategies)
                 {
-                    cnn.ExecuteAsync(
+                    cnn.Execute(
                         @"INSERT INTO Strategy 
-                        ( Name, Setup, VictoryPoints, FlipSuit, Source ) VALUES 
-                        ( @Name, @Setup, @VictoryPoints, @FlipSuit, @Source )"
+                        ( Id, Name, Setup, VictoryPoints, FlipSuit, Source, SpecialRules ) VALUES 
+                        ( NULL, @Name, @Setup, @VictoryPoints, @FlipSuit, @Source, @SpecialRules )"
                         , strategy);
                 }
             }
