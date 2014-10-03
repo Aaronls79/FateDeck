@@ -5,46 +5,58 @@
         $('select.form-control').removeClass('form-control').css('width', '100%');
     }
 
-    ko.applyBindings(StandardEncounterDeploymentViewModel);
+    standardEncounterDeploymentViewModel = new StandardEncounterDeploymentViewModel();
+    ko.applyBindings(standardEncounterDeploymentViewModel);
 
-    StandardEncounterDeploymentViewModel.FlipAgain();
+    standardEncounterDeploymentViewModel.Flip();
+    var name = standardEncounterDeploymentViewModel.Strategy.Name;
 });
 
 function StandardEncounterDeploymentViewModel() {
     var self = this;
+    self.Loading = ko.observable(true), self.ShowEncouter = ko.observable(false);
     self.Deployment = {
         Name: ko.observable(''),
-        Description: ko.observable(''),
+        Description: ko.observable('')
     };
     self.Strategy = {
         Name: ko.observable(''),
         Setup: ko.observable(''),
-        VictoryPoints: ko.observable(''),
+        VictoryPoints: ko.observable('')
     };
     self.Scheme1 = {
         Name: ko.observable(''),
-        Description: ko.observable(''),
+        Description: ko.observable('')
     };
     self.Scheme2 = {
         Name: ko.observable(''),
-        Description: ko.observable(''),
+        Description: ko.observable('')
     };
     self.Scheme3 = {
         Name: ko.observable(''),
-        Description: ko.observable(''),
+        Description: ko.observable('')
     };
     self.Scheme4 = {
         Name: ko.observable(''),
-        Description: ko.observable(''),
+        Description: ko.observable('')
     };
     self.Scheme5 = {
         Name: ko.observable(''),
-        Description: ko.observable(''),
+        Description: ko.observable('')
     };
-    self.FlipAgain = function () {
-
+    self.Flip = function () {
+        self.Loading(true), self.ShowEncouter(false);
+        $.getJSON('/api/standardencounter', function (data) {
+            self.Deployment.Description(data.Deployment.Description);
+            self.Deployment.Name(data.Deployment.Name);
+            self.Strategy.Name(data.Strategy.Name);
+            self.Strategy.Setup(data.Strategy.Setup);
+            self.Strategy.VictoryPoints(data.Strategy.VictoryPoints);
+            self.Loading(false), self.ShowEncouter(true);
+        });
     }
 };
+var standardEncounterDeploymentViewModel;
 
 if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     var msViewportStyle = document.createElement('style');

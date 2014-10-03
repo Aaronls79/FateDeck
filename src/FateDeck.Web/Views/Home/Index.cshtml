@@ -1,59 +1,62 @@
 ﻿@{
     ViewBag.Title = "Standard Encounter";
 }
-<div class="row">
+<div data-bind="visable: ShowEncouter" class="row">
     <div class="col-md-4">
-        <h2>Deployment <small data-bind="Value: Deployment.Name" class="text-right"></small></h2>
-        <p data-bind="Value: Deployment.Description"></p>
+        <h2>Deployment <small data-bind="text: Deployment.Name" class="text-right"></small></h2>
+        <p data-bind="text: Deployment.Description"></p>
         <hr class="hidden-lg hidden-md" />
     </div>
     <div class="col-md-4">
-        <h2>Strategy <small class="text-right" data-bind="Value: Strategy.Name"></small></h2>
+        <h2>Strategy <small class="text-right" data-bind="text: Strategy.Name"></small></h2>
         <dl>
             <dt>Setup</dt>
-            <dd data-bind="Value: Strategy.Setup"></dd>
+            <dd data-bind="text: Strategy.Setup"></dd>
             <dt>Victory Points</dt>
-            <dd data-bind="Value: Strategy.VictoryPoints"></dd>
+            <dd data-bind="text: Strategy.VictoryPoints"></dd>
         </dl>
         <hr class="hidden-lg hidden-md" />
     </div>
     <div class="col-md-4">
-        <h2>Scheme <small class="text-right" data-bind="Value: Scheme1.Name"></small></h2>
-        <p data-bind="Value: Scheme1.Description"></p>
+        <h2>Scheme <small class="text-right" data-bind="text: Scheme1.Name"></small></h2>
+        <p data-bind="text: Scheme1.Description"></p>
         <hr class="hidden-lg hidden-md" />
     </div>
 </div>
-<hr class="hidden-xs hidden-sm" />
-<div class="row">
+<hr data-bind="visable: ShowEncouter" class="hidden-xs hidden-sm" />
+<div data-bind="visable: ShowEncouter" class="row">
     <div class="col-md-4">
-        <h2>Scheme <small class="text-right" data-bind="Value: Scheme2.Name"></small></h2>
-        <p data-bind="Value: Scheme2.Description"></p>
+        <h2>Scheme <small class="text-right" data-bind="text: Scheme2.Name"></small></h2>
+        <p data-bind="text: Scheme2.Description"></p>
         <hr class="hidden-lg hidden-md" />
     </div>
     <div class="col-md-4">
-        <h2>Scheme <small class="text-right" data-bind="Value: Scheme3.Name"></small></h2>
-        <p data-bind="Value: Scheme3.Description"></p>
+        <h2>Scheme <small class="text-right" data-bind="text: Scheme3.Name"></small></h2>
+        <p data-bind="text: Scheme3.Description"></p>
         <hr class="hidden-lg hidden-md" />
     </div>
     <div class="col-md-4">
-        <h2>Scheme <small class="text-right" data-bind="Value: Scheme4.Name"></small></h2>
-        <p data-bind="Value: Scheme4.Description"></p>
-        <hr class="hidden-lg hidden-md" />
-    </div>
-</div>
-<hr class="hidden-xs hidden-sm" />
-<div class="row">
-    <div class="col-md-4">
-        <h2>Scheme <small class="text-right" data-bind="Value: Scheme5.Name"></small></h2>
-        <p data-bind="Value: Scheme5.Description"></p>
+        <h2>Scheme <small class="text-right" data-bind="text: Scheme4.Name"></small></h2>
+        <p data-bind="text: Scheme4.Description"></p>
         <hr class="hidden-lg hidden-md" />
     </div>
 </div>
-<hr class="hidden-xs hidden-sm" />
+<hr data-bind="visable: ShowEncouter" class="hidden-xs hidden-sm" />
+<div data-bind="visable: ShowEncouter" class="row">
+    <div class="col-md-4">
+        <h2>Scheme <small class="text-right" data-bind="text: Scheme5.Name"></small></h2>
+        <p data-bind="text: Scheme5.Description"></p>
+        <hr class="hidden-lg hidden-md" />
+    </div>
+</div>
+<hr data-bind="visable: ShowEncouter" class="hidden-xs hidden-sm" />
 <div class="row">
     <div class="col-xs-12">
-        <button type="button" data-bind="click: FlipAgain" data-loading-text="Loading..." class="btn btn-primary btn-lg col-xs-12">
+        <button type="button" data-bind="click: Flip, visable: ShowEncouter" data-loading-text="Loading..." class="btn btn-primary btn-lg col-xs-12">
             Flip Again
         </button>
+        <div data-bind="visable: Loading" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+            <span class="sr-only"></span>
+        </div>
     </div>
 </div>
