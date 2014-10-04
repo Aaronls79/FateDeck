@@ -16,7 +16,7 @@ namespace FateDeck.Tests
         public void SetUp()
         {
             DataSource.Delete();
-            DataSource.Create().Initialize();
+            DataSource.Create();
         }
     }
 }

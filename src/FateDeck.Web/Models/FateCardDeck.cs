@@ -83,7 +83,7 @@ namespace FateDeck.Web.Models
             cards.RemoveAll(x => HandOfCards.Exists(y => y.Key == x.Key));
             while (FateDeckStack.Count + HandOfCards.Count < AvailableCards.Length)
             {
-                var index = random.Next(cards.Count - 1);
+                var index = random.Next(0,cards.Count);
                 FateDeckStack.Push(cards[index]);
                 cards.RemoveAt(index);
             }

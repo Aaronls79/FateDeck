@@ -14,9 +14,9 @@ namespace FateDeck.Tests
         public void GetDeployment_GivenFateCard_ReturnsDeployment()
         {
             var deck = new FateCardDeck();
-            deck.Shuffle();
-            var deployment = _repository.GetDeployment(deck.Flip());
+            var deployment = _repository.GetDeployment(deck.AvailableCards[1]);
             deployment.IsNotNullOrEmpty();
+            deployment.Name.ShouldEqual("Standard Deployment");
         }
     }
 }

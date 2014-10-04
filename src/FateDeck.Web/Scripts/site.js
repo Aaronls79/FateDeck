@@ -9,12 +9,12 @@
     ko.applyBindings(standardEncounterDeploymentViewModel);
 
     standardEncounterDeploymentViewModel.Flip();
-    var name = standardEncounterDeploymentViewModel.Strategy.Name;
 });
 
 function StandardEncounterDeploymentViewModel() {
     var self = this;
-    self.Loading = ko.observable(true), self.ShowEncouter = ko.observable(false);
+    self.Loading = ko.observable(true);
+    self.ShowEncouter = ko.observable(false);
     self.Deployment = {
         Name: ko.observable(''),
         Description: ko.observable('')
@@ -45,14 +45,26 @@ function StandardEncounterDeploymentViewModel() {
         Description: ko.observable('')
     };
     self.Flip = function () {
-        self.Loading(true), self.ShowEncouter(false);
+        self.Loading(true);
+        self.ShowEncouter(false);
         $.getJSON('/api/standardencounter', function (data) {
             self.Deployment.Description(data.Deployment.Description);
             self.Deployment.Name(data.Deployment.Name);
             self.Strategy.Name(data.Strategy.Name);
             self.Strategy.Setup(data.Strategy.Setup);
             self.Strategy.VictoryPoints(data.Strategy.VictoryPoints);
-            self.Loading(false), self.ShowEncouter(true);
+            self.Scheme1.Name(data.Schemes[0].Name);
+            self.Scheme1.Description(data.Schemes[0].Description);
+            self.Scheme2.Name(data.Schemes[1].Name);
+            self.Scheme2.Description(data.Schemes[1].Description);
+            self.Scheme3.Name(data.Schemes[2].Name);
+            self.Scheme3.Description(data.Schemes[2].Description);
+            self.Scheme4.Name(data.Schemes[3].Name);
+            self.Scheme4.Description(data.Schemes[3].Description);
+            self.Scheme5.Name(data.Schemes[4].Name);
+            self.Scheme5.Description(data.Schemes[4].Description);
+            self.Loading(false);
+            self.ShowEncouter(true);
         });
     }
 };

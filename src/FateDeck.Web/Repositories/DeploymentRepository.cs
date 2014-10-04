@@ -16,8 +16,8 @@ namespace FateDeck.Web.Repositories
                 {
                     return cnn.Query<Deployment>(@"
                             SELECT * FROM Deployment
-                            WHERE FlipValueMax <= @Value AND FlipValueMin >= @Value
-                        ", new {fateCard.Value}
+                            WHERE FlipValueMax >= @Value AND FlipValueMin <= @Value
+                        ", new { Value =fateCard.Value}
                     ).FirstOrDefault();
                 }
                 return cnn.Query<Deployment>(@"

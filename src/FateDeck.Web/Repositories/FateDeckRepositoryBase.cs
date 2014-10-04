@@ -16,7 +16,7 @@ namespace FateDeck.Web.Repositories
 
         protected RepositoryBase()
         {
-            new DataSource().Create().Initialize();
+            new DataSource().Create();
         }
 
         protected virtual List<string> Fields
