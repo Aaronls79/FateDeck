@@ -1,6 +1,5 @@
-﻿using FateDeck.Web.App_Start;
-using FateDeck.Web.Controllers;
-using FateDeck.Web.Repositories.Contracts;
+﻿using FateDeck.Web.Controllers;
+using FateDeck.Web.Repositories;
 
 namespace FateDeck.Tests
 {
@@ -10,7 +9,7 @@ namespace FateDeck.Tests
         public ApiControllerTestBase(T controller)
         {
             Controller = controller;
-            Controller.Repositories = NinjectWebCommon.Get<IRepositoryFactory>();
+            Controller.Repositories = new RepositoryFactory();
         }
     }
 }

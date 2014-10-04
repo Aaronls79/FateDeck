@@ -1,15 +1,19 @@
 ﻿using FateDeck.Web.Repositories.Contracts;
-using Ninject;
 
 namespace FateDeck.Web.Repositories
 {
     public class RepositoryFactory : IRepositoryFactory
     {
-        [Inject]
+        public RepositoryFactory():this(null,null,null) {}
+        public RepositoryFactory(IDeploymentRepository deploymentRepository, ISchemesRepository schemesRepository, IStrategyRepository strategyRepository)
+        {
+            DeploymentRepository = deploymentRepository ?? new  DeploymentRepository();
+            SchemesRepository = schemesRepository?? new SchemesRepository();
+            StrategyRepository = strategyRepository?? new StrategyRepository();
+        }
+
         public IDeploymentRepository DeploymentRepository { get; set; }
-        [Inject]
         public ISchemesRepository SchemesRepository { get; set; }
-        [Inject]
         public IStrategyRepository StrategyRepository { get; set; }
     }
 }
