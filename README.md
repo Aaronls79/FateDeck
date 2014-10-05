@@ -17,6 +17,9 @@ View that fits small, medium and large screen sizes.
 
 src\FateDeck.Web\Views\Home\Index.cshtml
 
-knockout.js Viewmodel and view bindind.
+knockout.js Viewmodel and view bindind
+
 src\FateDeck.Web\Scripts/site.js
+
 src\FateDeck.Web\Views\Home\Index.cshtml
+
