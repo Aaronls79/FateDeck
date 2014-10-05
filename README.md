@@ -22,4 +22,3 @@ View that fits small, medium and large screen sizes.
 
 src\FateDeck.Web\Views\Home\Index.cshtml
 
-Plus Nick is awesome!
