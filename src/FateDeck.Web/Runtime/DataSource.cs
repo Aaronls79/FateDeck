@@ -11,7 +11,7 @@ namespace FateDeck.Web.Runtime
     {
         public static string DbFile
         {
-            get { return Environment.CurrentDirectory + "\\FateDeck.sqlite"; }
+            get { return Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "bin") +"\\FateDeck.sqlite"; }
         }
 
         public static SQLiteConnection Connection()
