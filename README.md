@@ -1,4 +1,3 @@
-FateDeck
 www.fatedeck.com
 ========
 
