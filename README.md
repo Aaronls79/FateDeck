@@ -1,7 +1,8 @@
 FateDeck
+www.fatedeck.com
 ========
 
-This is learning project that is currently under development about 16 hours. It is an encounter generator for the game of Malifaux. The goals of this project are to explore mobile first responsive design, Dapper Micro-ORM, and SQLite DB. 
+This is learning project that is currently under development. It is an encounter generator for the game of Malifaux. The goals of this project are to explore mobile first responsive design, Dapper Micro-ORM, and SQLite DB. 
 
 Some interesting bits:
 
